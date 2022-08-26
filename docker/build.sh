@@ -39,11 +39,12 @@ echo "docker system prune -f -a"
 
 #cmssw_pkgs="proxy frontend exporters exitcodes nats-sub das dbs2go dbs couchdb reqmgr2 reqmgr2ms reqmon workqueue acdcserver crabserver crabcache cmsmon dmwmmon dqmgui t0_reqmon t0wmadatasvc dbsmigration phedex httpgo httpsgo"
 
-cmssw_pkgs="cmsweb cmsweb-base frontend dbs dbsmigration reqmgr2 reqmon crabserver crabcache t0_reqmon t0wmadatasvc workqueue reqmgr2ms reqmgr2ms-unmerged"
+cmssw_pkgs="cmsweb cmsweb-base frontend dbs dbsmigration reqmgr2 reqmon t0_reqmon t0wmadatasvc workqueue reqmgr2ms reqmgr2ms-unmerged"
 
 rucio_pkgs="rucio-consistency rucio-daemons rucio-probes rucio-server rucio-sync rucio-tracer rucio-ui rucio-upgrade"
 
 monitoring_pkgs="cmsmon cmsmon-alerts cmsmon-intelligence cmsweb-monit condor-cpu-eff jobber karma log-clustering monitor nats-nsc nats-sub rumble sqoop vmbackup-utility udp-server"
+cmscrab_pkgs="crabserver"
 
 if [ $# -eq 1 ]; then
     cmssw_pkgs="$1"
@@ -66,6 +67,9 @@ for pkg in $cmssw_pkgs; do
     fi
     if [ "$pkg" == "cmsweb" ] || [ "$pkg" == "cmsweb-base" ]; then
        registry=registry.cern.ch/cmsweb
+    fi
+    if [[ $cmscrab_pkgs == *$pkg* ]]; then
+       registry=registry.cern.ch/cmscrab
     fi
 
 
