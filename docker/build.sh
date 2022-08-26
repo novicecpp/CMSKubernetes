@@ -44,7 +44,7 @@ cmssw_pkgs="cmsweb cmsweb-base frontend dbs dbsmigration reqmgr2 reqmon t0_reqmo
 rucio_pkgs="rucio-consistency rucio-daemons rucio-probes rucio-server rucio-sync rucio-tracer rucio-ui rucio-upgrade"
 
 monitoring_pkgs="cmsmon cmsmon-alerts cmsmon-intelligence cmsweb-monit condor-cpu-eff jobber karma log-clustering monitor nats-nsc nats-sub rumble sqoop vmbackup-utility udp-server"
-cmscrab_pkgs="crabserver"
+cmscrab_pkgs="crabserver crabcache"
 
 if [ $# -eq 1 ]; then
     cmssw_pkgs="$1"
