@@ -50,6 +50,10 @@ spec:
             {{- toYaml .Values.resources | nindent 12 }}
           command:
           {{- toYaml .Values.image.command | nindent 10 }}
+          {{- if .Values.image.args }}
+          args:
+          {{- toYaml .Values.image.args | nindent 10 }}
+          {{- end }}
           env:
           {{- toYaml .Values.image.env | nindent 10 }}
           livenessProbe:

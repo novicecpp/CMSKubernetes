@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 
+replicaCount:
   prod: 8
   test: 1
 
@@ -33,7 +33,7 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
-podAnnotations: 
+podAnnotations:
   prometheus.io/scrape: 'true'
   prometheus.io/port: "18270"
 
@@ -45,7 +45,7 @@ podSecurityContext:
 imageFilebeatSecurityContext:
   allowPrivilegeEscalation: false
 
-securityContext: 
+securityContext:
   privileged: true
 
 serviceMon:
@@ -59,7 +59,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
 
-resources: 
+resources:
   limits:
     cpu: 1500m
     memory: 3Gi
@@ -76,7 +76,7 @@ deamonset:
   - bash
   - -c
   - filebeat -c /etc/filebeat.yml --path.data /data/filebeat/${MY_NODE_NAME}/data -e
-  env: 
+  env:
   - name: MY_NODE_NAME
     valueFrom:
       fieldRef:
@@ -94,10 +94,9 @@ deamonset:
     requests:
       memory: "128Mi"
       cpu: "200m"
-    limits: 
+    limits:
       cpu: "1"
       memory: "1Gi"
-
 
 livenessProbe:
   exec:
@@ -118,8 +117,9 @@ readinessProbe:
     - -c
     - |
       cmsweb-ping --url=http://localhost:8270/crabserver/prod/info --authz=/etc/hmac/hmac -verbose 0 | egrep "^[2-4]"
-  periodSeconds: 60  
+  periodSeconds: 60
   timeoutSeconds: 60
+
 
 livenessProbePreProd:
   exec:
@@ -140,7 +140,7 @@ readinessProbePreProd:
     - -c
     - |
       cmsweb-ping --url=http://localhost:8270/crabserver/preprod/info --authz=/etc/hmac/hmac -verbose 0 | egrep "^[2-4]"
-  periodSeconds: 60  
+  periodSeconds: 60
   timeoutSeconds: 60
 
 livenessProbeTest:

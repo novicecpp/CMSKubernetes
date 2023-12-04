@@ -12,7 +12,7 @@ data:
     echo 'INFO Files in /etc/grid-security'
     ls -lahZ /etc/grid-security
     #su  -c "cd /data && /data/run.sh" --preserve-environment  _crabserver
-    cd /data && /data/run.sh
+    #cd /data && /data/run.sh
 ---
 apiVersion: v1
 kind: ConfigMap

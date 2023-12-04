@@ -1,0 +1,21 @@
+image:
+  #path: registry.cern.ch/cmsweb/crabserver
+  path: registry.cern.ch/cmscrab/crabserver
+  pullPolicy: Always
+  tag: "pypi-2ea9d1429ebe56c527b53f17b4adb4503a4f095f"
+  command:
+  - /data/entrypoint.sh
+  args:
+  - /bin/bash
+  - -c
+  - /bin/bash /opt/setup-certs-and-run/setup-certs-and-run.sh && /data/run.sh
+  env:
+  - name: CRABSERVER_LOGSTDOUT
+    value: "t"
+
+environment: test12
+#https://helm.sh/docs/chart_template_guide/values_files/#deleting-a-default-key
+livenessProbePreProd: null
+readinessProbePreProd: null
+readinessProbe: null
+livenessProbe: null
