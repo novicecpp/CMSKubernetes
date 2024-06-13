@@ -16,7 +16,8 @@ image:
         && ls -lahZ /etc/grid-security \
         && /data/run.sh
 
-#https://helm.sh/docs/chart_template_guide/values_files/#deleting-a-default-key
+# disable liveness/readiness
+# https://helm.sh/docs/chart_template_guide/values_files/#deleting-a-default-key
 livenessProbePreProd: null
 readinessProbePreProd: null
 readinessProbe: null
