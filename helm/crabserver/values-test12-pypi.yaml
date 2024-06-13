@@ -20,5 +20,7 @@ image:
 # https://helm.sh/docs/chart_template_guide/values_files/#deleting-a-default-key
 livenessProbePreProd: null
 readinessProbePreProd: null
-readinessProbe: null
+livenessProbeTest: null
+readinessProbeTest: null
 livenessProbe: null
+readinessProbe: null
