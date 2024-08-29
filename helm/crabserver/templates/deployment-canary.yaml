@@ -87,8 +87,8 @@ spec:
           - mountPath: /host/etc/grid-security
             name: etc-grid-security
             readOnly: true
-          - name: setup-certs-and-run
-            mountPath: /opt/setup-certs-and-run
+          - name: config
+            mountPath: /opt/config
           - name: token-secrets
             mountPath: /etc/token
             readOnly: true
@@ -110,7 +110,7 @@ spec:
       - name: etc-grid-security
         hostPath:
             path: /etc/grid-security
-      - name: setup-certs-and-run
+      - name: config
         configMap:
           name: crabserver
       - name: token-secrets
