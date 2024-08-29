@@ -2,11 +2,3 @@ environment: "prod"
 
 image:
   tag: "v3.240809-stable"
-  path: "registry.cern.ch/cmscrab/crabserver"
-
-canary:
-  enabled: true
-  replicaCount: 1
-  image:
-    tag: "v3.240820-stable"
-    path: "registry.cern.ch/cmscrab/crabserver"
