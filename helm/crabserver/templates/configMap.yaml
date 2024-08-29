@@ -1,3 +1,4 @@
+{{- $environment := .Values.environment | default dict }}
 {{- if .Values.enabled -}}
 kind: ConfigMap
 apiVersion: v1
@@ -7,10 +8,15 @@ metadata:
     app: crabserver
   namespace: crab
 data:
-  setup-certs-and-run.sh: |
-    #!/bin/bash
-    sudo cp /host/etc/grid-security/* /etc/grid-security
-    echo 'INFO Files in /etc/grid-security'
-    ls -lahZ /etc/grid-security
-    exec /data/entrypoint.sh /data/run.sh
+  setup.sh: |
+{{ (.Files.Get "scripts/setup.sh" | indent 4) }}
+  config.py: |
+{{- if (eq (toString $environment) "prod") }}
+{{ (.Files.Get "config/prod/config.py" | indent 4) }}
+{{- else if (eq (toString $environment) "preprod")}}
+{{ (.Files.Get "config/preprod/config.py" | indent 4) }}
+{{- else }}
+{{ (.Files.Get "config/test/config.py" | indent 4) }}
+{{- end }}
+
 {{- end }}

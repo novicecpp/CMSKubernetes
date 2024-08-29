@@ -16,7 +16,7 @@ image:
   tag: "v3.231006"
   command:
   - /bin/bash
-  - /opt/setup-certs-and-run/setup-certs-and-run.sh
+  - /opt/config/setup-certs-and-run.sh
   env:
   - name: CRABSERVER_LOGSTDOUT
     value: "t"
