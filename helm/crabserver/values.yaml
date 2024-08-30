@@ -11,7 +11,7 @@ replicaCount:
 
 image:
   path: registry.cern.ch/cmscrab/crabserver
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "v3.231006"
   command:
@@ -27,12 +27,12 @@ canary:
   enabled: false
   image:
     path: registry.cern.ch/cmscrab/crabserver
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
     # Overrides the image tag whose default is the chart appVersion.
     tag: "v3.231006"
     command:
     - /bin/bash
-    - /opt/setup-certs-and-run/setup-certs-and-run.sh
+    - /opt/config/setup.sh
     env:
     - name: CRABSERVER_LOGSTDOUT
       value: "t"
